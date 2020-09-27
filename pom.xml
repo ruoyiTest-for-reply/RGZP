@@ -209,6 +209,7 @@
                 <version>${ruoyi.version}</version>
             </dependency>
 
+            <!--学生信息依赖-->
             <dependency>
                 <groupId>com.ruoyi</groupId>
                 <artifactId>ruoyi-student</artifactId>

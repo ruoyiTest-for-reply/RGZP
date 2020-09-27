@@ -12,27 +12,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.enums.BusinessType;
-import com.ruoyi.student.domain.SysStudent;
-import com.ruoyi.student.service.ISysStudentService;
+import com.ruoyi.student.domain.JmrStudent;
+import com.ruoyi.student.service.IJmrStudentService;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.common.core.page.TableDataInfo;
 
 /**
- * 学生信息Controller
+ * 学生信息管理Controller
  * 
- * @author gaofeng
+ * @author wangxh
  * @date 2020-09-27
  */
 @Controller
 @RequestMapping("/student/student")
-public class SysStudentController extends BaseController
+public class JmrStudentController extends BaseController
 {
     private String prefix = "student/student";
 
     @Autowired
-    private ISysStudentService sysStudentService;
+    private IJmrStudentService jmrStudentService;
 
     @RequiresPermissions("student:student:view")
     @GetMapping()
@@ -42,34 +42,34 @@ public class SysStudentController extends BaseController
     }
 
     /**
-     * 查询学生信息列表
+     * 查询学生信息管理列表
      */
     @RequiresPermissions("student:student:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(SysStudent sysStudent)
+    public TableDataInfo list(JmrStudent jmrStudent)
     {
         startPage();
-        List<SysStudent> list = sysStudentService.selectSysStudentList(sysStudent);
+        List<JmrStudent> list = jmrStudentService.selectJmrStudentList(jmrStudent);
         return getDataTable(list);
     }
 
     /**
-     * 导出学生信息列表
+     * 导出学生信息管理列表
      */
     @RequiresPermissions("student:student:export")
-    @Log(title = "学生信息", businessType = BusinessType.EXPORT)
+    @Log(title = "学生信息管理", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     @ResponseBody
-    public AjaxResult export(SysStudent sysStudent)
+    public AjaxResult export(JmrStudent jmrStudent)
     {
-        List<SysStudent> list = sysStudentService.selectSysStudentList(sysStudent);
-        ExcelUtil<SysStudent> util = new ExcelUtil<SysStudent>(SysStudent.class);
+        List<JmrStudent> list = jmrStudentService.selectJmrStudentList(jmrStudent);
+        ExcelUtil<JmrStudent> util = new ExcelUtil<JmrStudent>(JmrStudent.class);
         return util.exportExcel(list, "student");
     }
 
     /**
-     * 新增学生信息
+     * 新增学生信息管理
      */
     @GetMapping("/add")
     public String add()
@@ -78,49 +78,49 @@ public class SysStudentController extends BaseController
     }
 
     /**
-     * 新增保存学生信息
+     * 新增保存学生信息管理
      */
     @RequiresPermissions("student:student:add")
-    @Log(title = "学生信息", businessType = BusinessType.INSERT)
+    @Log(title = "学生信息管理", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave(SysStudent sysStudent)
+    public AjaxResult addSave(JmrStudent jmrStudent)
     {
-        return toAjax(sysStudentService.insertSysStudent(sysStudent));
+        return toAjax(jmrStudentService.insertJmrStudent(jmrStudent));
     }
 
     /**
-     * 修改学生信息
+     * 修改学生信息管理
      */
-    @GetMapping("/edit/{studentId}")
-    public String edit(@PathVariable("studentId") Long studentId, ModelMap mmap)
+    @GetMapping("/edit/{sId}")
+    public String edit(@PathVariable("sId") Long sId, ModelMap mmap)
     {
-        SysStudent sysStudent = sysStudentService.selectSysStudentById(studentId);
-        mmap.put("sysStudent", sysStudent);
+        JmrStudent jmrStudent = jmrStudentService.selectJmrStudentById(sId);
+        mmap.put("jmrStudent", jmrStudent);
         return prefix + "/edit";
     }
 
     /**
-     * 修改保存学生信息
+     * 修改保存学生信息管理
      */
     @RequiresPermissions("student:student:edit")
-    @Log(title = "学生信息", businessType = BusinessType.UPDATE)
+    @Log(title = "学生信息管理", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(SysStudent sysStudent)
+    public AjaxResult editSave(JmrStudent jmrStudent)
     {
-        return toAjax(sysStudentService.updateSysStudent(sysStudent));
+        return toAjax(jmrStudentService.updateJmrStudent(jmrStudent));
     }
 
     /**
-     * 删除学生信息
+     * 删除学生信息管理
      */
     @RequiresPermissions("student:student:remove")
-    @Log(title = "学生信息", businessType = BusinessType.DELETE)
+    @Log(title = "学生信息管理", businessType = BusinessType.DELETE)
     @PostMapping( "/remove")
     @ResponseBody
     public AjaxResult remove(String ids)
     {
-        return toAjax(sysStudentService.deleteSysStudentByIds(ids));
+        return toAjax(jmrStudentService.deleteJmrStudentByIds(ids));
     }
 }
