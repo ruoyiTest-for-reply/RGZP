@@ -81,11 +81,17 @@
 
 
         <dependency>
-        <groupId>com.ruoyi</groupId>
-        <artifactId>ruoyi-enterprise</artifactId>
-        <version>${ruoyi.version}</version>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-enterprise</artifactId>
+            <version>${ruoyi.version}</version>
+        </dependency>
 
-    </dependency>
+        <!--学生信息的依赖-->
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-student</artifactId>
+            <version>${ruoyi.version}</version>
+        </dependency>
 
     </dependencies>
 

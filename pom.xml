@@ -202,10 +202,17 @@
                 <version>${ruoyi.version}</version>
             </dependency>
 
+            <!--公司信息依赖-->
             <dependency>
                 <groupId>com.ruoyi</groupId>
                 <artifactId>ruoyi-enterprise</artifactId>
-                <version>{ruoyi.version}</version>
+                <version>${ruoyi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.ruoyi</groupId>
+                <artifactId>ruoyi-student</artifactId>
+                <version>${ruoyi.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -219,9 +226,7 @@
         <module>ruoyi-common</module>
 
         <module>ruoyi-enterprise</module>
-
-        <module>ruoyi-enterprise</module>
-        <module>test</module>
+        <module>ruoyi-student</module>
     </modules>
     <packaging>pom</packaging>
 
