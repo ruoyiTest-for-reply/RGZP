@@ -78,12 +78,14 @@
             <groupId>com.ruoyi</groupId>
             <artifactId>ruoyi-generator</artifactId>
         </dependency>
+
+
         <dependency>
-            <groupId>com.ruoyi</groupId>
-            <artifactId>ruoyi-mall</artifactId>
-            <version>4.4.0</version>
-            <scope>compile</scope>
-        </dependency>
+        <groupId>com.ruoyi</groupId>
+        <artifactId>ruoyi-enterprise</artifactId>
+        <version>${ruoyi.version}</version>
+
+    </dependency>
 
     </dependencies>
 
