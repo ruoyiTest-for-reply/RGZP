@@ -1,7 +1,7 @@
 package com.ruoyi.statistic.mapper;
 
 import java.util.List;
-import com.ruoyi.statistic.domain.JmrStudent;
+
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2020-09-27
  */
 @Mapper
-public interface JmrStudentMapper {
+public interface TjStudentMapper {
 
     List<List> findAll();
 }

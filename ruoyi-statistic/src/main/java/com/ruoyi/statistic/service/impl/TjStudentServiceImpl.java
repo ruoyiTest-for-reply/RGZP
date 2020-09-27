@@ -3,10 +3,8 @@ package com.ruoyi.statistic.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ruoyi.statistic.mapper.JmrStudentMapper;
-import com.ruoyi.statistic.domain.JmrStudent;
-import com.ruoyi.statistic.service.IJmrStudentService;
-import com.ruoyi.common.core.text.Convert;
+import com.ruoyi.statistic.mapper.TjStudentMapper;
+import com.ruoyi.statistic.service.ITjStudentService;
 
 /**
  * 学生t统计Service业务层处理
@@ -15,10 +13,10 @@ import com.ruoyi.common.core.text.Convert;
  * @date 2020-09-27
  */
 @Service
-public class JmrStudentServiceImpl implements IJmrStudentService 
+public class TjStudentServiceImpl implements ITjStudentService
 {
     @Autowired
-    private JmrStudentMapper jmrStudentMapper;
+    private TjStudentMapper tjStudentMapper;
 
     /**
      * 查询学生t统计
@@ -28,7 +26,7 @@ public class JmrStudentServiceImpl implements IJmrStudentService
      */
     @Override
     public List<List> findAll() {
-        return jmrStudentMapper.findAll();
+        return tjStudentMapper.findAll();
     }
 
 }

@@ -1,23 +1,12 @@
 package com.ruoyi.statistic.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import com.ruoyi.common.annotation.Log;
-import com.ruoyi.common.enums.BusinessType;
-import com.ruoyi.statistic.domain.JmrStudent;
-import com.ruoyi.statistic.service.IJmrStudentService;
-import com.ruoyi.statistic.service.impl.JmrStudentServiceImpl;
-import com.ruoyi.common.core.controller.BaseController;
-import com.ruoyi.common.core.domain.AjaxResult;
-import com.ruoyi.common.utils.poi.ExcelUtil;
-import com.ruoyi.common.core.page.TableDataInfo;
+import com.ruoyi.statistic.service.ITjStudentService;
 
 /**
  * 学生t统计Controller
@@ -27,10 +16,10 @@ import com.ruoyi.common.core.page.TableDataInfo;
  */
 @Controller
 @RequestMapping(value = "/student")
-public class JmrStudentController {
+public class TjStudentController {
 
     @Autowired
-    private IJmrStudentService ijmrStudentService;
+    private ITjStudentService itjStudentService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index() {
@@ -41,7 +30,7 @@ public class JmrStudentController {
     public Map<String,Object> getList() {
         Map<String,Object> map = new HashMap<>();
         map.put("msg", "ok");
-        map.put("data", ijmrStudentService.findAll());
+        map.put("data", itjStudentService.findAll());
         return map;
     }
 }
