@@ -85,6 +85,13 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+        <groupId>com.ruoyi</groupId>
+        <artifactId>ruoyi-enterprise</artifactId>
+        <version>4.4.0</version>
+
+    </dependency>
+
     </dependencies>
 
     <build>
