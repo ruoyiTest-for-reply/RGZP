@@ -85,6 +85,11 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-statistic</artifactId>
+            <version>${ruoyi.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
