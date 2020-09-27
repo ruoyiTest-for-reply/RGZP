@@ -201,6 +201,11 @@
                 <artifactId>ruoyi-common</artifactId>
                 <version>${ruoyi.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.ruoyi</groupId>
+                <artifactId>ruoyi-statistic</artifactId>
+                <version>${ruoyi.version}</version>
+            </dependency>
 
             <!--公司信息依赖-->
             <dependency>
