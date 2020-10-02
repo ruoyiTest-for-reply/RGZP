@@ -233,6 +233,7 @@
 
         <module>ruoyi-enterprise</module>
         <module>ruoyi-student</module>
+        <module>ruoyi-job</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('学生匹配信息统计列表')" />
+</head>
+<body class="gray-bg">
+     <div class="container-div">
+        <div class="row">
+            <div class="col-sm-12 search-collapse">
+                <form id="formId">
+                    <div class="select-list">
+                        <ul>
+<!--                            <li>-->
+<!--                                <label>匹配岗位结果id：</label>-->
+<!--                                <input type="text" name="jmrId"/>-->
+<!--                            </li>-->
+                            <li>
+                                <label>学生姓名：</label>
+                                <input type="text" name="jmrSId"/>
+                            </li>
+                            <li>
+                                <label>企业名称：</label>
+                                <input type="text" name="jmrCId"/>
+                            </li>
+                            <li>
+                                <label>岗位名称：</label>
+                                <input type="text" name="jmrJId"/>
+                            </li>
+                            <li>
+                                <label>匹配结果：</label>
+                                <input type="text" name="jmrBId"/>
+                            </li>
+<!--                            <li>-->
+<!--                                <label>匹配数值：</label>-->
+<!--                                <input type="text" name="jmrValue"/>-->
+<!--                            </li>-->
+                            <li>
+                                <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                                <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+
+            <div class="btn-group-sm" id="toolbar" role="group">
+<!--                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="statistic:result:add">-->
+<!--                    <i class="fa fa-plus"></i> 添加-->
+<!--                </a>-->
+<!--                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="statistic:result:edit">-->
+<!--                    <i class="fa fa-edit"></i> 修改-->
+<!--                </a>-->
+<!--                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="statistic:result:remove">-->
+<!--                    <i class="fa fa-remove"></i> 删除-->
+<!--                </a>-->
+                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="statistic:result:export">
+                    <i class="fa fa-download"></i> 导出
+                </a>
+            </div>
+            <div class="col-sm-12 select-table table-striped">
+                <table id="bootstrap-table"></table>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+        var editFlag = [[${@permission.hasPermi('statistic:result:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('statistic:result:remove')}]];
+        var prefix = ctx + "statistic/result";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                exportUrl: prefix + "/export",
+                modalName: "学生匹配信息统计",
+                columns: [{
+                    checkbox: true
+                },
+                {
+                    field: 'jmrId',
+                    title: '匹配岗位结果id',
+                    visible: false
+                },
+                {
+                    field: 'tjJmrStudent.sName',
+                    title: '学生姓名'
+                },
+                {
+                    field: 'tjJmrCompany.cName',
+                    title: '企业名称'
+                },
+                {
+                    field: 'tjJmrPosition.pName',
+                    title: '岗位'
+                },
+                {
+                    field: 'tjJmrBase.jmrSexValue',
+                    title: '性别匹配值'
+                },
+                {
+                    field: 'tjJmrBase.jmrLevelValue',
+                    title: '学校层次匹配值'
+                },
+                {
+                    field: 'tjJmrBase.jmrProfessionValue',
+                    title: '专业匹配值'
+                },
+                {
+                    field: 'tjJmrBase.jmrHistoryValue',
+                    title: '学历匹配值'
+                },
+                {
+                    field: 'tjJmrBase.jmrLanguageValue',
+                    title: '外语水平匹配值'
+                },
+                {field: 'tjJmrBase.jmrRangeValue',
+                    title: '期望薪资范围匹配值'
+                },
+                {field: 'tjJmrBase.jmrPositionValue',
+                    title: '期望岗位匹配值'
+                },
+                {
+                    field: 'tjJmrBase.jmrCityValue',
+                    title: '就业意向地匹配值'
+                },
+                {
+                    field: 'jmrValue',
+                    title: '综合匹配值'
+                },
+                // {
+                //     title: '操作',
+                //     align: 'center',
+                //     formatter: function(value, row, index) {
+                //         var actions = [];
+                //         actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.jmrId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                //         actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.jmrId + '\')"><i class="fa fa-remove"></i>删除</a>');
+                //         return actions.join('');
+                //     }
+                // }
+                ]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

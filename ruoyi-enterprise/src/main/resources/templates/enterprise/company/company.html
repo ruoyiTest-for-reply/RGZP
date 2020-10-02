@@ -71,7 +71,7 @@
         var editFlag = [[${@permission.hasPermi('enterprise:company:edit')}]];
         var removeFlag = [[${@permission.hasPermi('enterprise:company:remove')}]];
         var prefix = ctx + "enterprise/company";
-
+        var userName = [[${@permission.getPrincipalProperty('userName')}]];
         $(function() {
             var options = {
                 url: prefix + "/list",
@@ -128,6 +128,12 @@
                 }]
             };
             $.table.init(options);
+            //自定义查询参数
+            function queryParams(params) {
+                var search = $.table.queryParams(params);
+                search.cName = userName;
+                return search;
+            }
         });
     </script>
 </body>

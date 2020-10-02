@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.statistic.mapper.TjJmrJobMatchResultMapper">
+    
+    <resultMap type="TjJmrJobMatchResult" id="TjJmrJobMatchResultResult">
+        <result property="jmrId"    column="jmr_id"    />
+        <result property="jmrSId"    column="jmr_s_id"    />
+        <result property="jmrCId"    column="jmr_c_id"    />
+        <result property="jmrJId"    column="jmr_j_id"    />
+        <result property="jmrBId"    column="jmr_b_id"    />
+        <result property="jmrValue"    column="jmr_value"    />
+
+        <association property="tjJmrBase" javaType="TjJmrBase">
+            <id property="jmrBId"    column="jmr_b_id"    />
+            <result property="jmrSexValue"    column="jmr_sex_value"    />
+            <result property="jmrLevelValue"    column="jmr_level_value"    />
+            <result property="jmrProfessionValue"    column="jmr_profession_value"    />
+            <result property="jmrHistoryValue"    column="jmr_history_value"    />
+            <result property="jmrLanguageValue"    column="jmr_language_value"    />
+            <result property="jmrRangeValue"    column="jmr_range_value"    />
+            <result property="jmrPositionValue"    column="jmr_position_value"    />
+            <result property="jmrCityValue"    column="jmr_city_value"    />
+        </association>
+
+        <association property="tjJmrCompany" javaType="TjJmrCompany">
+            <id property="cId"    column="c_id"    />
+            <result property="cName"    column="c_name"    />
+            <result property="cPassword"    column="c_password"    />
+            <result property="cSCode"    column="c_s_code"    />
+            <result property="cDescription"    column="c_description"    />
+            <result property="cContact"    column="c_contact"    />
+            <result property="cTelephone"    column="c_telephone"    />
+            <result property="cEmail"    column="c_email"    />
+        </association>
+
+        <association property="tjJmrJob" javaType="TjJmrJob">
+            <id property="jId"    column="j_id"    />
+            <result property="jPoId"    column="j_po_id"    />
+            <result property="jSex"    column="j_sex"    />
+            <result property="jEHistory"    column="j_e_history"    />
+            <result property="jCLevel"    column="j_c_level"    />
+            <result property="jFLanguage"    column="j_f_language"    />
+            <result property="jPrId"    column="j_pr_id"    />
+            <result property="jSRange"    column="j_s_range"    />
+            <result property="jECity"    column="j_e_city"    />
+            <result property="jPRequire"    column="j_p_require"    />
+            <result property="jWelfare"    column="j_welfare"    />
+            <result property="jNeedNumber"    column="j_need_number"    />
+            <result property="jRemark"    column="j_remark"    />
+            <result property="jExpire"    column="j_expire"    />
+            <result property="jCId"    column="j_c_id"    />
+        </association>
+
+        <association property="tjJmrStudent" javaType="TjJmrStudent">
+            <id property="sId"    column="s_id"    />
+            <result property="sName"    column="s_name"    />
+            <result property="sIdCard"    column="s_id_card"    />
+            <result property="sSex"    column="s_sex"    />
+            <result property="sBirthday"    column="s_birthday"    />
+            <result property="sCollege"    column="s_college"    />
+            <result property="sCLevel"    column="s_c_level"    />
+            <result property="sProfession"    column="s_profession"    />
+            <result property="sEHistory"    column="s_e_history"    />
+            <result property="sNProvince"    column="s_n_province"    />
+            <result property="sNCity"    column="s_n_city"    />
+            <result property="sFLanguage"    column="s_f_language"    />
+            <result property="sSRange"    column="s_s_range"    />
+            <result property="sEPosition"    column="s_e_position"    />
+            <result property="sECity"    column="s_e_city"    />
+            <result property="sGTime"    column="s_g_time"    />
+            <result property="sTelephone"    column="s_telephone"    />
+            <result property="sEmail"    column="s_email"    />
+            <result property="sSAttachment"    column="s_s_attachment"    />
+            <result property="sIfWork"    column="s_if_work"    />
+            <result property="sWCity"    column="s_w_city"    />
+            <result property="sCompany"    column="s_company"    />
+        </association>
+
+        <association property="TjJmrPosition" javaType="tjJmrPosition">
+            <id property="pId"    column="p_id"    />
+            <result property="pName"    column="p_name"    />
+        </association>
+    </resultMap>
+
+<!--    <sql id="selectTjJmrJobMatchResultVo">-->
+<!--        select jmr_id, jmr_s_id, jmr_c_id, jmr_j_id, jmr_b_id, jmr_value from jmr_job_match_result-->
+<!--    </sql>-->
+
+<!--    <select id="selectTjJmrJobMatchResultList" parameterType="TjJmrJobMatchResult" resultMap="TjJmrJobMatchResultResult">-->
+<!--        <include refid="selectTjJmrJobMatchResultVo"/>-->
+<!--        <where>-->
+<!--            <if test="jmrId != null "> and jmr_id = #{jmrId}</if>-->
+<!--            <if test="jmrSId != null "> and jmr_s_id = #{jmrSId}</if>-->
+<!--            <if test="jmrCId != null "> and jmr_c_id = #{jmrCId}</if>-->
+<!--            <if test="jmrJId != null "> and jmr_j_id = #{jmrJId}</if>-->
+<!--            <if test="jmrBId != null "> and jmr_b_id = #{jmrBId}</if>-->
+<!--            <if test="jmrValue != null "> and jmr_value = #{jmrValue}</if>-->
+<!--        </where>-->
+<!--    </select>-->
+
+<!--    <select id="selectTjJmrJobMatchResultById" parameterType="Long" resultMap="TjJmrJobMatchResultResult">-->
+<!--        <include refid="selectTjJmrJobMatchResultVo"/>-->
+<!--        where jmr_id = #{jmrId}-->
+<!--    </select>-->
+
+    <sql id="selectTjJmrJobMatchResultVo">
+        select jb.jmr_b_id,jb.jmr_sex_value,jb.jmr_level_value,jb.jmr_profession_value,jb.jmr_history_value,jb.jmr_language_value,jb.jmr_range_value,jb.jmr_position_value,jb.jmr_city_value,
+        jc.c_name,jc.c_id,
+        js.s_name,js.s_id,
+        jp.p_id,jp.p_name,
+        jr.jmr_id, jr.jmr_s_id, jr.jmr_c_id, jr.jmr_j_id, jr.jmr_b_id, jr.jmr_value from ry.jmr_job_match_result jr
+            join ry.jmr_base jb on jb.jmr_b_id = jr.jmr_b_id
+            join ry.jmr_company jc on jc.c_id = jr.jmr_c_id
+            join ry.jmr_position jp on jp.p_id = jr.jmr_j_id
+            join ry.jmr_student js on js.s_id = jr.jmr_s_id
+
+    </sql>
+
+    <select id="selectTjJmrJobMatchResultList" parameterType="TjJmrJobMatchResult" resultMap="TjJmrJobMatchResultResult">
+        <include refid="selectTjJmrJobMatchResultVo"/>
+        <where>
+            <if test="jmrId != null "> and jr.jmr_id = #{jmrId}</if>
+            <if test="jmrSId != null "> and jr.jmr_s_id = #{jmrSId}</if>
+            <if test="jmrCId != null "> and jr.jmr_c_id = #{jmrCId}</if>
+            <if test="jmrJId != null "> and jr.jmr_j_id = #{jmrJId}</if>
+            <if test="jmrBId != null "> and jr.jmr_b_id = #{jmrBId}</if>
+            <if test="jmrValue != null "> and jr.jmr_value = #{jmrValue}</if>
+        </where>
+    </select>
+
+    <select id="selectTjJmrJobMatchResultById" parameterType="Long" resultMap="TjJmrJobMatchResultResult">
+        <include refid="selectTjJmrJobMatchResultVo"/>
+        where jr.jmr_id = #{jmrId}
+    </select>
+        
+    <insert id="insertTjJmrJobMatchResult" parameterType="TjJmrJobMatchResult" useGeneratedKeys="true" keyProperty="jmrId">
+        insert into ry.jmr_job_match_result
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="jmrSId != null">jmr_s_id,</if>
+            <if test="jmrCId != null">jmr_c_id,</if>
+            <if test="jmrJId != null">jmr_j_id,</if>
+            <if test="jmrBId != null">jmr_b_id,</if>
+            <if test="jmrValue != null">jmr_value,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="jmrSId != null">#{jmrSId},</if>
+            <if test="jmrCId != null">#{jmrCId},</if>
+            <if test="jmrJId != null">#{jmrJId},</if>
+            <if test="jmrBId != null">#{jmrBId},</if>
+            <if test="jmrValue != null">#{jmrValue},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTjJmrJobMatchResult" parameterType="TjJmrJobMatchResult">
+        update ry.jmr_job_match_result
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="jmrSId != null">jmr_s_id = #{jmrSId},</if>
+            <if test="jmrCId != null">jmr_c_id = #{jmrCId},</if>
+            <if test="jmrJId != null">jmr_j_id = #{jmrJId},</if>
+            <if test="jmrBId != null">jmr_b_id = #{jmrBId},</if>
+            <if test="jmrValue != null">jmr_value = #{jmrValue},</if>
+        </trim>
+        where jmr_id = #{jmrId}
+    </update>
+
+    <delete id="deleteTjJmrJobMatchResultById" parameterType="Long">
+        delete from ry.jmr_job_match_result where jmr_id = #{jmrId}
+    </delete>
+
+    <delete id="deleteTjJmrJobMatchResultByIds" parameterType="String">
+        delete from ry.jmr_job_match_result where jmr_id in
+        <foreach item="jmrId" collection="array" open="(" separator="," close=")">
+            #{jmrId}
+        </foreach>
+    </delete>
+
+</mapper>

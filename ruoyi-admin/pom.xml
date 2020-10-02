@@ -98,6 +98,12 @@
             <artifactId>ruoyi-statistic</artifactId>
             <version>${ruoyi.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-job</artifactId>
+            <version>${ruoyi.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
