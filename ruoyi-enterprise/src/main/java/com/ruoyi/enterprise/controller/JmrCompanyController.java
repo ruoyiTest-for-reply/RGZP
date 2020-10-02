@@ -1,6 +1,9 @@
 package com.ruoyi.enterprise.controller;
 
 import java.util.List;
+
+import com.ruoyi.framework.util.ShiroUtils;
+import com.ruoyi.system.domain.SysUser;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +41,17 @@ public class JmrCompanyController extends BaseController
     @GetMapping()
     public String company()
     {
-        return prefix + "/company";
+        // 获取当前的用户信息
+        SysUser sysUser = ShiroUtils.getSysUser();
+// 获取当前的用户名称
+        String userName = sysUser.getLoginName();
+        if (userName.equals("admin")){
+            return prefix + "/company1";
+        }else {
+            return prefix + "/company";
+        }
+
+
     }
 
     /**
