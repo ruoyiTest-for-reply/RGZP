@@ -9,7 +9,7 @@ import com.ruoyi.student.domain.JmrStudent;
  * @author wangxh
  * @date 2020-09-27
  */
-public interface JmrStudentMapper 
+public interface JmrSelectStudentMapper
 {
     /**
      * 查询学生信息管理

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ruoyi.student.mapper.JmrSelectStudentMapper">
+<mapper namespace="com.ruoyi.job.mapper.JmrRyStudentMapper">
     
-    <resultMap type="JmrStudent" id="JmrStudentResult">
+    <resultMap type="JmrRyStudent" id="JmrRyStudentResult">
         <result property="sId"    column="s_id"    />
         <result property="sName"    column="s_name"    />
         <result property="sIdCard"    column="s_id_card"    />
@@ -29,18 +29,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="sCompany"    column="s_company"    />
     </resultMap>
 
-    <sql id="selectJmrStudentVo">
+    <sql id="selectJmrRyStudentVo">
         select s_id, s_name, s_id_card, s_sex, s_birthday, s_college, s_c_level, s_profession, s_e_history, s_n_province, s_n_city, s_f_language, s_s_range, s_e_position, s_e_city, s_g_time, s_telephone, s_email, s_s_attachment, s_if_work, s_w_city, s_company from jmr_student
     </sql>
 
-    <select id="selectJmrStudentList" parameterType="JmrStudent" resultMap="JmrStudentResult">
-        <include refid="selectJmrStudentVo"/>
+    <select id="selectJmrRyStudentList" parameterType="JmrRyStudent" resultMap="JmrRyStudentResult">
+        <include refid="selectJmrRyStudentVo"/>
         <where>  
+            <if test="sId != null "> and s_id = #{sId}</if>
             <if test="sName != null  and sName != ''"> and s_name like concat('%', #{sName}, '%')</if>
             <if test="sIdCard != null  and sIdCard != ''"> and s_id_card = #{sIdCard}</if>
             <if test="sSex != null "> and s_sex = #{sSex}</if>
             <if test="sBirthday != null  and sBirthday != ''"> and s_birthday = #{sBirthday}</if>
-            <if test="sCollege != null  and sCollege != ''"> and s_college = #{sCollege}</if>
+            <if test="sCollege != null  and sCollege != ''"> and s_college like concat('%', #{sCollege}, '%')</if>
             <if test="sCLevel != null "> and s_c_level = #{sCLevel}</if>
             <if test="sProfession != null "> and s_profession = #{sProfession}</if>
             <if test="sEHistory != null "> and s_e_history = #{sEHistory}</if>
@@ -60,12 +61,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </where>
     </select>
     
-    <select id="selectJmrStudentById" parameterType="Long" resultMap="JmrStudentResult">
-        <include refid="selectJmrStudentVo"/>
+    <select id="selectJmrRyStudentById" parameterType="Long" resultMap="JmrRyStudentResult">
+        <include refid="selectJmrRyStudentVo"/>
         where s_id = #{sId}
     </select>
         
-    <insert id="insertJmrStudent" parameterType="JmrStudent" useGeneratedKeys="true" keyProperty="sId">
+    <insert id="insertJmrRyStudent" parameterType="JmrRyStudent" useGeneratedKeys="true" keyProperty="sId">
         insert into jmr_student
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="sName != null and sName != ''">s_name,</if>
@@ -115,7 +116,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </trim>
     </insert>
 
-    <update id="updateJmrStudent" parameterType="JmrStudent">
+    <update id="updateJmrRyStudent" parameterType="JmrRyStudent">
         update jmr_student
         <trim prefix="SET" suffixOverrides=",">
             <if test="sName != null and sName != ''">s_name = #{sName},</if>
@@ -143,11 +144,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where s_id = #{sId}
     </update>
 
-    <delete id="deleteJmrStudentById" parameterType="Long">
+    <delete id="deleteJmrRyStudentById" parameterType="Long">
         delete from jmr_student where s_id = #{sId}
     </delete>
 
-    <delete id="deleteJmrStudentByIds" parameterType="String">
+    <delete id="deleteJmrRyStudentByIds" parameterType="String">
         delete from jmr_student where s_id in 
         <foreach item="sId" collection="array" open="(" separator="," close=")">
             #{sId}
