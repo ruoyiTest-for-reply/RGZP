@@ -95,6 +95,6 @@ public class JmrSelectStudentServiceImpl implements IJmrStudentService
     @Override
     public List<JmrStudent> selectJmrStudentByUserId(JmrStudent jmrStudent)
     {
-        return jmrStudentMapper.selectJmrStudentByUserId(jmrStudent);
+        return jmrSelectStudentMapper.selectJmrStudentByUserId(jmrStudent);
     }
 }
