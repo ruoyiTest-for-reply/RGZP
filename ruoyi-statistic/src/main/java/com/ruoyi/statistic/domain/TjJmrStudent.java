@@ -6,12 +6,12 @@ import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
- * 学生t统计对象 jmr_student
+ * 学生统计对象 jmr_student
  * 
  * @author LiangLiang
- * @date 2020-09-27
+ * @date 2020-09-30
  */
-public class TjStudent extends BaseEntity
+public class TjJmrStudent extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
