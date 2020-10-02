@@ -15,9 +15,133 @@
 <body class="gray-bg">
 <div class="container-div">
     <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <form id="formId">
+                <div class="select-list">
+                    <ul>
+                        <li>
+                            <label>学生姓名：</label>
+                            <input type="text" name="sName"/>
+                        </li>
+                        <li>
+                            <label>学生身份证号：</label>
+                            <input type="text" name="sIdCard"/>
+                        </li>
+                        <li>
+                            <label>性别：</label>
+                            <select name="sSex" th:with="type=${@dict.getType('sys_user_sex')}">
+                                <option value="">所有</option>
+                                <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>出生年月：</label>
+                            <input type="text" name="sBirthday"/>
+                        </li>
+                        <li>
+                            <label>毕业院校：</label>
+                            <input type="text" name="sCollege"/>
+                        </li>
+                        <li>
+                            <label>毕业院校层次：</label>
+                            <select name="sCLevel" th:with="type=${@dict.getType('s_c_level')}">
+                                <option value="">所有</option>
+                                <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>专业：</label>
+                            <select name="sProfession" th:with="type=${@dict.getType('s_stu_prof')}">
+                                <option value="">所有</option>
+                                <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>学历：</label>
+                            <select name="sEHistory" th:with="type=${@dict.getType('s_e_history')}">
+                                <option value="">所有</option>
+                                <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>籍贯-省份：</label>
+                            <input type="text" name="sNProvince"/>
+                        </li>
+                        <li>
+                            <label>籍贯-地级市：</label>
+                            <input type="text" name="sNCity"/>
+                        </li>
+                        <li>
+                            <label>外语水平：</label>
+                            <select name="sFLanguage" th:with="type=${@dict.getType('s_f_language')}">
+                                <option value="">所有</option>
+                                <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>期望薪资范围：</label>
+                            <select name="sSRange" th:with="type=${@dict.getType('s_s_range')}">
+                                <option value="">所有</option>
+                                <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>期望岗位：</label>
+                            <select name="sEPosition" th:with="type=${@dict.getType('s_stu_pos')}">
+                                <option value="">所有</option>
+                                <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>就业意向地：</label>
+                            <select name="sECity" th:with="type=${@dict.getType('s_e_city')}">
+                                <option value="">所有</option>
+                                <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>毕业时间：</label>
+                            <input type="text" name="sGTime"/>
+                        </li>
+                        <li>
+                            <label>电话：</label>
+                            <input type="text" name="sTelephone"/>
+                        </li>
+                        <li>
+                            <label>邮箱：</label>
+                            <input type="text" name="sEmail"/>
+                        </li>
+                        <li>
+                            <label>成绩单附件地址：</label>
+                            <input type="text" name="sSAttachment"/>
+                        </li>
+                        <li>
+                            <label>是否就业：</label>
+                            <select name="sIfWork" th:with="type=${@dict.getType('s_if_work')}">
+                                <option value="">所有</option>
+                                <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>就业地-地级市：</label>
+                            <input type="text" name="sWCity"/>
+                        </li>
+                        <li>
+                            <label>就业的企业：</label>
+                            <input type="text" name="sCompany"/>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
         <div class="btn-group-sm" id="toolbar" role="group">
             <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="student:student:add">
-                <i class="fa fa-plus"></i> 发布简历
+                <i class="fa fa-plus"></i> 添加
             </a>
             <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="student:student:edit">
                 <i class="fa fa-edit"></i> 修改
@@ -51,12 +175,8 @@
 
     $(function() {
         var options = {
-            url: prefix + "/student",
-            /*
-            *  将学生信息 中 的  添加学生信息
-            *  换成 “发布简历” 并 更改相应的 url
-            * */
-            createUrl: "/student/resume" + "/add",
+            url: prefix + "/list",
+            createUrl: prefix + "/add",
             updateUrl: prefix + "/edit/{id}",
             removeUrl: prefix + "/remove",
             exportUrl: prefix + "/export",

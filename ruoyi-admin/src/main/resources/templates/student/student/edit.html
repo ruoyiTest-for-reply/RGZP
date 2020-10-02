@@ -47,12 +47,10 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">专业：</label>
                 <div class="col-sm-8">
-                    <select name="sProfession" class="form-control m-b" th:with="type=${@dict.getType('s_stu_prof')}" required>
-                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}" th:field="*{sProfession}"></option>
-                    </select>
+                    <input name="sProfession" th:field="*{sProfession}" class="form-control" type="text" required>
                 </div>
             </div>
             <div class="form-group">    
@@ -91,12 +89,10 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">期望岗位：</label>
                 <div class="col-sm-8">
-                    <select name="sEPosition" class="form-control m-b" th:with="type=${@dict.getType('s_stu_pos')}" required>
-                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}" th:field="*{sEPosition}"></option>
-                    </select>
+                    <input name="sEPosition" th:field="*{sEPosition}" class="form-control" type="text" required>
                 </div>
             </div>
             <div class="form-group">    

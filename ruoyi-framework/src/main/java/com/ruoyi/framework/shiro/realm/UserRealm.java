@@ -96,6 +96,7 @@ public class UserRealm extends AuthorizingRealm
         SysUser user = null;
         try
         {
+            //here!!!***********
             user = loginService.login(username, password);
         }
         catch (CaptchaException e)

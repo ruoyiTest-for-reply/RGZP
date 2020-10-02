@@ -1,5 +1,7 @@
 package com.ruoyi.student.domain;
 
+import com.ruoyi.framework.util.ShiroUtils;
+import com.ruoyi.system.domain.SysUser;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
@@ -8,7 +10,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
 /**
  * 学生信息管理对象 jmr_student
  * 
- * @author wangxh
+ * @author liangliang
  * @date 2020-09-27
  */
 public class JmrStudent extends BaseEntity
@@ -102,7 +104,13 @@ public class JmrStudent extends BaseEntity
     @Excel(name = "就业的企业")
     private String sCompany;
 
-    public void setsId(Long sId) 
+// 获取当前的用户信息
+    SysUser user = ShiroUtils.getSysUser();
+    String loginName = user.getLoginName();
+
+
+
+    public void setsId(Long sId)
     {
         this.sId = sId;
     }
