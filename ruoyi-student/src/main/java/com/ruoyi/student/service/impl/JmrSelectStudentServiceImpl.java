@@ -3,7 +3,7 @@ package com.ruoyi.student.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ruoyi.student.mapper.JmrStudentMapper;
+import com.ruoyi.student.mapper.JmrSelectStudentMapper;
 import com.ruoyi.student.domain.JmrStudent;
 import com.ruoyi.student.service.IJmrStudentService;
 import com.ruoyi.common.core.text.Convert;
@@ -15,10 +15,10 @@ import com.ruoyi.common.core.text.Convert;
  * @date 2020-09-27
  */
 @Service
-public class JmrStudentServiceImpl implements IJmrStudentService 
+public class JmrSelectStudentServiceImpl implements IJmrStudentService
 {
     @Autowired
-    private JmrStudentMapper jmrStudentMapper;
+    private JmrSelectStudentMapper jmrSelectStudentMapper;
 
     /**
      * 查询学生信息管理
@@ -29,7 +29,7 @@ public class JmrStudentServiceImpl implements IJmrStudentService
     @Override
     public JmrStudent selectJmrStudentById(Long sId)
     {
-        return jmrStudentMapper.selectJmrStudentById(sId);
+        return jmrSelectStudentMapper.selectJmrStudentById(sId);
     }
 
     /**
@@ -41,7 +41,7 @@ public class JmrStudentServiceImpl implements IJmrStudentService
     @Override
     public List<JmrStudent> selectJmrStudentList(JmrStudent jmrStudent)
     {
-        return jmrStudentMapper.selectJmrStudentList(jmrStudent);
+        return jmrSelectStudentMapper.selectJmrStudentList(jmrStudent);
     }
 
     /**
@@ -53,7 +53,7 @@ public class JmrStudentServiceImpl implements IJmrStudentService
     @Override
     public int insertJmrStudent(JmrStudent jmrStudent)
     {
-        return jmrStudentMapper.insertJmrStudent(jmrStudent);
+        return jmrSelectStudentMapper.insertJmrStudent(jmrStudent);
     }
 
     /**
@@ -65,7 +65,7 @@ public class JmrStudentServiceImpl implements IJmrStudentService
     @Override
     public int updateJmrStudent(JmrStudent jmrStudent)
     {
-        return jmrStudentMapper.updateJmrStudent(jmrStudent);
+        return jmrSelectStudentMapper.updateJmrStudent(jmrStudent);
     }
 
     /**
@@ -77,7 +77,7 @@ public class JmrStudentServiceImpl implements IJmrStudentService
     @Override
     public int deleteJmrStudentByIds(String ids)
     {
-        return jmrStudentMapper.deleteJmrStudentByIds(Convert.toStrArray(ids));
+        return jmrSelectStudentMapper.deleteJmrStudentByIds(Convert.toStrArray(ids));
     }
 
     /**
@@ -89,6 +89,6 @@ public class JmrStudentServiceImpl implements IJmrStudentService
     @Override
     public int deleteJmrStudentById(Long sId)
     {
-        return jmrStudentMapper.deleteJmrStudentById(sId);
+        return jmrSelectStudentMapper.deleteJmrStudentById(sId);
     }
 }
