@@ -44,6 +44,7 @@ public class JmrRyCompanyController extends BaseController
     /**
      * 查询企业信息查询列表
      */
+
     @RequiresPermissions("job:companyJob:list")
     @PostMapping("/list")
     @ResponseBody
