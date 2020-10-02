@@ -1,12 +1,13 @@
 package com.ruoyi.enterprise.service.impl;
 
-import java.util.List;
+import com.ruoyi.common.core.text.Convert;
+import com.ruoyi.enterprise.domain.JmrCompany;
+import com.ruoyi.enterprise.mapper.JmrCompanyMapper;
+import com.ruoyi.enterprise.service.IJmrCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ruoyi.enterprise.mapper.JmrCompanyMapper;
-import com.ruoyi.enterprise.domain.JmrCompany;
-import com.ruoyi.enterprise.service.IJmrCompanyService;
-import com.ruoyi.common.core.text.Convert;
+
+import java.util.List;
 
 /**
  * 企业列表Service业务层处理
