@@ -91,4 +91,10 @@ public class JmrStudentServiceImpl implements IJmrStudentService
     {
         return jmrStudentMapper.deleteJmrStudentById(sId);
     }
+
+    @Override
+    public List<JmrStudent> selectJmrStudentByUserId(JmrStudent jmrStudent)
+    {
+        return jmrStudentMapper.selectJmrStudentByUserId(jmrStudent);
+    }
 }

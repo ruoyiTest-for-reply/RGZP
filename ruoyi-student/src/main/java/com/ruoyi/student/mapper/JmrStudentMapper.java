@@ -6,7 +6,7 @@ import com.ruoyi.student.domain.JmrStudent;
 /**
  * 学生信息管理Mapper接口
  * 
- * @author wangxh
+ * @author liangliang
  * @date 2020-09-27
  */
 public interface JmrStudentMapper 
@@ -58,4 +58,13 @@ public interface JmrStudentMapper
      * @return 结果
      */
     public int deleteJmrStudentByIds(String[] sIds);
+
+    /*
+    * 学生用户查询自己的信息
+    *
+    *@param 学生信息
+    * return 结果
+    * */
+
+    public List<JmrStudent> selectJmrStudentByUserId(JmrStudent jmrStudent);
 }
