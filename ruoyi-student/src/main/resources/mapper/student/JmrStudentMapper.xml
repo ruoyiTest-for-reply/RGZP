@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ruoyi.student.mapper.JmrStudentMapper">
+<mapper namespace="com.ruoyi.student.mapper.JmrSelectStudentMapper">
     
     <resultMap type="JmrStudent" id="JmrStudentResult">
         <result property="sId"    column="s_id"    />
@@ -29,13 +29,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="sCompany"    column="s_company"    />
     </resultMap>
 
+
     <sql id="selectJmrStudentVo">
-        select s_id, s_name, s_id_card, s_sex, s_birthday, s_college, s_c_level, s_profession, s_e_history, s_n_province, s_n_city, s_f_language, s_s_range, s_e_position, s_e_city, s_g_time, s_telephone, s_email, s_s_attachment, s_if_work, s_w_city, s_company from jmr_student
+        select s_id, s_name, s_id_card, s_sex, s_birthday, s_college, s_c_level, s_profession,
+        s_e_history, s_n_province, s_n_city, s_f_language, s_s_range, s_e_position, s_e_city, s_g_time,
+         s_telephone, s_email, s_s_attachment, s_if_work, s_w_city, s_company from jmr_student
     </sql>
+
+    <!--学生查询自己的信息-->
+    <select id="selectJmrStudentByUserId" parameterType="JmrStudent" resultMap="JmrStudentResult">
+        <include refid="selectJmrStudentVo"/>
+        where s_telephone = #{loginName}
+    </select>
 
     <select id="selectJmrStudentList" parameterType="JmrStudent" resultMap="JmrStudentResult">
         <include refid="selectJmrStudentVo"/>
-        <where>  
+        <where>
             <if test="sName != null  and sName != ''"> and s_name like concat('%', #{sName}, '%')</if>
             <if test="sIdCard != null  and sIdCard != ''"> and s_id_card = #{sIdCard}</if>
             <if test="sSex != null "> and s_sex = #{sSex}</if>
