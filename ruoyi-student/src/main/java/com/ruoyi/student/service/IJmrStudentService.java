@@ -2,13 +2,16 @@ package com.ruoyi.student.service;
 
 import java.util.List;
 import com.ruoyi.student.domain.JmrStudent;
+import org.springframework.stereotype.Service;
 
 /**
  * 学生信息管理Service接口
  * 
- * @author wangxh
+ * @author liangliang
  * @date 2020-09-27
  */
+
+@Service("studentService")
 public interface IJmrStudentService 
 {
     /**
@@ -58,4 +61,6 @@ public interface IJmrStudentService
      * @return 结果
      */
     public int deleteJmrStudentById(Long sId);
+
+    public List<JmrStudent> selectJmrStudentByUserId(JmrStudent jmrStudent);
 }
